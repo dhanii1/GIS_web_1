@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashboard - GIS Kabupaten Demak</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+
+        <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+
+    <body>
+        <div class="app-container">
+            <header class="position-fixed">
+                <div class="container header-container">
+                    <div class="logo d-flex align-items-center gap-4">
+                        <img src="image/logo upgris.png" alt="logo upgris" />
+                        <div class="title-subtitle">
+                            <h4 class="m-0">GIS Data Pendidikan Kabupaten Demak</h4>
+                            <p class="m-0">
+                                Visualisasi data sekolah, murid, dan guru berdasarkan jenjang
+                                pendidikan dan Kecamatan
+                            </p>
+                        </div>
+                    </div>
+
+                    <nav class="navbar">
+                        <a href="index.html" class="active">Dashboard</a>
+                        <a href="data.html">Data</a>
+                        <a href="informasi.html">Informasi</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main id="main-content" class="main-content">
+                <aside class="sidebar-wrapper">
+                    <div class="sidebar-header">
+                        <h6 class="text-white mb-3">
+                            <i class="fas fa-filter me-2"></i>Filter Data
+                        </h6>
+
+                        <div class="filter-section">
+                            <span class="form-label">Jenjang Pendidikan</span>
+                            <div class="filter-jenjang mb-3">
+                                <div class="row g-0">
+                                    <div class="col-6">
+                                        <label class="filter-option">
+                                            <input type="checkbox" value="SD" checked /> SD
+                                        </label>
+                                        <label class="filter-option">
+                                            <input type="checkbox" value="SMP" checked /> SMP
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="filter-option">
+                                            <input type="checkbox" value="SMA" checked /> SMA
+                                        </label>
+                                        <label class="filter-option">
+                                            <input type="checkbox" value="SMK" checked /> SMK
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="form-label">Status Sekolah</span>
+                            <div class="filter-status">
+                                <div class="row g-0">
+                                    <div class="col-6">
+                                        <label class="filter-option">
+                                            <input type="checkbox" value="swasta" checked /> Swasta
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="filter-option">
+                                            <input type="checkbox" value="negeri" checked /> Negeri
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-content sidebar card-body"></div>
+                </aside>
+
+                <div class="map-wrapper">
+                    <iframe src="map/index.html" class="map-frame"></iframe>
+
+                    <div class="floating-chart-container">
+                        <div class="chart-title">Statistik Sekolah</div>
+                        <canvas id="chartPendidikan"></canvas>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+        <script src="map/data/data_pendidikan_demak.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

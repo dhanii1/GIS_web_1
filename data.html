@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+
+        <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+        <style>
+            body {
+                overflow-y: auto; /* Agar bisa di-scroll */
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div class="app-container">
+            <header class="position-fixed">
+                <div class="container header-container">
+                    <div class="logo d-flex align-items-center gap-4">
+                        <img src="image/logo upgris.png" alt="logo upgris" />
+                        <div class="title-subtitle">
+                            <h4 class="m-0">GIS Data Pendidikan Kabupaten Demak</h4>
+                            <p class="m-0">
+                                Visualisasi data sekolah, murid, dan guru berdasarkan jenjang
+                                pendidikan dan Kecamatan
+                            </p>
+                        </div>
+                    </div>
+
+                    <nav class="navbar">
+                        <a href="index.html">Dashboard</a>
+                        <a href="data.html">Data</a>
+                        <a href="informasi.html">Informasi</a>
+                    </nav>
+                </div>
+            </header>
+
+            <div class="container mt-5 pt-5 pb-5">
+        
+                <div class="row align-items-end mb-4 mt-3">
+                    <div class="col-lg-6">
+                        <small class="text-blue-400 fw-bold text-uppercase ls-1">Database Wilayah</small>
+                        <h2 class="text-white fw-bold mb-1">Rekapitulasi Pendidikan</h2>
+                        <p class="text-secondary mb-0 small">Data sebaran Sekolah, Guru, dan Murid per Kecamatan Tahun 2024</p>
+                    </div>
+                    <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
+                        <div class="d-flex gap-2 justify-content-lg-end">
+                            <div class="input-group" style="max-width: 250px;">
+                                <span class="input-group-text bg-dark border-secondary text-secondary"><i class="fas fa-search"></i></span>
+                                <input type="text" id="searchInput" class="form-control bg-dark border-secondary text-white shadow-none" placeholder="Cari Kecamatan...">
+                            </div>
+                            <button onclick="downloadCSV()" class="btn btn-primary d-flex align-items-center gap-2">
+                                <i class="fas fa-download"></i> <span class="d-none d-sm-inline">Export CSV</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4 ">
+                        <div class="glass-panel p-4 position-relative overflow-hidden h-100 border-sekolah">
+                            <div class="position-absolute end-0 top-0 p-3 opacity-10 text-blue-500">
+                                <i class="fas fa-school fa-4x sekolah"></i>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="text-blue-400 p-2 me-2">
+                                    <i class="fas fa-school"></i>
+                                </span>
+                                <small class="text-gray-300 text-uppercase fw-bold">Total Sekolah</small>
+                            </div>
+                            <h2 class="text-white fw-bold display-6 mb-0" id="statSekolah">0</h2>
+                            <small class="text-blue-400">Unit Pendidikan</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="glass-panel p-4 position-relative overflow-hidden h-100 border-guru">
+                            <div class="position-absolute end-0 top-0 p-3 opacity-10 text-green-500">
+                                <i class="fas fa-chalkboard-teacher fa-4x guru"></i>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="text-green-400 p-2 me-2">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </span>
+                                <small class="text-gray-300 text-uppercase fw-bold">Total Guru</small>
+                            </div>
+                            <h2 class="text-white fw-bold display-6 mb-0" id="statGuru">0</h2>
+                            <small class="text-green-400">Tenaga Pendidik</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="glass-panel p-4 position-relative overflow-hidden h-100 border-murid">
+                            <div class="position-absolute end-0 top-0 p-3 opacity-10 text-yellow-500">
+                                <i class="fas fa-user-graduate fa-4x murid"></i>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="text-yellow-400 p-2 me-2">
+                                    <i class="fas fa-user-graduate"></i>
+                                </span>
+                                <small class="text-gray-300 text-uppercase fw-bold">Total Murid</small>
+                            </div>
+                            <h2 class="text-white fw-bold display-6 mb-0" id="statMurid">0</h2>
+                            <small class="text-yellow-400">Peserta Didik</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-0 overflow-hidden mb-4">
+                    <div class="custom-table-container">
+                        <table class="table-dark-custom w-100" id="mainTable">
+                            <thead>
+                                <tr>
+                                    <th class="ps-4" width="5%">No</th>
+                                    <th width="20%">Kecamatan</th>
+                                    <th width="10%">Jenjang</th>
+                                    <th width="15%">Kategori</th>
+                                    <th class="text-center" width="15%">Negeri</th>
+                                    <th class="text-center" width="15%">Swasta</th>
+                                    <th class="text-center pe-4" width="20%">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="p-3 border-top border-secondary border-opacity-10 bg-dark bg-opacity-25 text-center text-secondary small">
+                        BPS Kabupaten Demak Tahun 2024
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="glass-panel p-4 position-relative overflow-hidden h-100 border-sekolah">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-school fa-2x me-3 text-blue-400"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">Data Sekolah</h5>
+                                    <small class="text-secondary">Export database sekolah</small>
+                                </div>
+                            </div>
+                            <hr class="my-3 opacity-25">
+                            <div class="d-grid gap-2">
+                                <a href="files/xlsx/Jumlah Fasilitas Sekolah Demak 2024.xlsx" class="btn btn-success text-white shadow-sm">
+                                    <i class="fas fa-file-excel me-2"></i>Download Excel
+                                </a>
+                                <a href="files/csv/Jumlah Fasilitas Sekolah Demak 2024.csv" class="btn btn-primary text-white shadow-sm">
+                                    <i class="fas fa-file-csv me-2"></i>Download CSV
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="glass-panel p-4 position-relative overflow-hidden h-100 border-guru">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-chalkboard-teacher fa-2x me-3 text-green-400"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">Data Guru</h5>
+                                    <small class="text-secondary">Export database guru</small>
+                                </div>
+                            </div>
+                            <hr class="my-3 opacity-25">
+                            <div class="d-grid gap-2">
+                                <a href="files/xlsx/Jumlah Guru Demak 2024.xlsx" class="btn btn-success text-white shadow-sm">
+                                    <i class="fas fa-file-excel me-2"></i>Download Excel
+                                </a>
+                                <a href="files/csv/Jumlah Guru Demak 2024.csv" class="btn btn-primary text-white shadow-sm">
+                                    <i class="fas fa-file-csv me-2"></i>Download CSV
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="glass-panel p-4 position-relative overflow-hidden h-100 border-murid">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-user-graduate fa-2x me-3 text-yellow-400"></i>
+                                <div>
+                                    <h5 class="fw-bold mb-0">Data Murid</h5>
+                                    <small class="text-secondary">Export database murid</small>
+                                </div>
+                            </div>
+                            <hr class="my-3 opacity-25">
+                            <div class="d-grid gap-2">
+                                <a href="files/xlsx/Jumlah Murid Demak 2024.xlsx" class="btn btn-success text-white shadow-sm">
+                                    <i class="fas fa-file-excel me-2"></i>Download Excel
+                                </a>
+                                <a href="files/csv/Jumlah Murid Demak 2024.csv" class="btn btn-primary text-white shadow-sm">
+                                    <i class="fas fa-file-csv me-2"></i>Download CSV
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-auto py-4" style="background: rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.05)">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            <p class="mb-0 text-white-50 small">
+                                &copy; 2024 <strong>GIS Pendidikan Demak</strong>. All rights reserved.
+                            </p>
+                            <small class="text-secondary" style="font-size: 0.7rem">
+                                Dibuat untuk keperluan Tugas Akhir / Penelitian Akademik.
+                            </small>
+                        </div>
+
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-links mb-2">
+                                <a
+                                    href="index.html"
+                                    class="text-white-50 text-decoration-none mx-2 small hover-white"
+                                    >Dashboard</a
+                                >
+                                <a
+                                    href="informasi.html"
+                                    class="text-white-50 text-decoration-none mx-2 small hover-white"
+                                    >Informasi</a
+                                >
+                                <a
+                                    href="#"
+                                    class="text-white-50 text-decoration-none mx-2 small hover-white"
+                                    onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+                                    >Ke Atas <i class="fas fa-chevron-up ms-1"></i
+                                ></a>
+                            </div>
+                            <div class="text-secondary" style="font-size: 0.75rem">
+                                <i class="fas fa-map-marker-alt me-1 text-primary"></i> Demak, Jawa
+                                Tengah, Indonesia
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        <script src="map/data/data_pendidikan_demak.js"></script>
+        <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+        <script src="map/data/data_pendidikan_demak.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

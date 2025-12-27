@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Informasi - GIS Kabupaten Demak</title>
+
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Icon -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+
+        <!-- Style -->
+        <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <style>
+            body.scrollable-page {
+                overflow-y: auto !important;
+                height: auto !important;
+            }
+            body.scrollable-page .main-content {
+                height: auto !important;
+                overflow: visible !important;
+                display: block !important;
+            }
+            body.scrollable-page #main-content {
+                padding-bottom: 80px !important;
+            }
+        </style>
+    </head>
+
+    <body class="scrollable-page">
+        <div class="app-container">
+            <header class="position-fixed">
+                <div class="container header-container">
+                    <div class="logo d-flex align-items-center gap-4">
+                        <img src="image/logo upgris.png" alt="logo upgris" />
+                        <div class="title-subtitle">
+                            <h4 class="m-0">GIS Data Pendidikan Kabupaten Demak</h4>
+                            <p class="m-0">
+                                Visualisasi data sekolah, murid, dan guru berdasarkan jenjang
+                                pendidikan dan Kecamatan
+                            </p>
+                        </div>
+                    </div>
+
+                    <nav class="navbar">
+                        <a href="index.html">Dashboard</a>
+                        <a href="data.html">Data</a>
+                        <a href="informasi.html">Informasi</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main id="main-content" class="main-content flex-column container mt-5 pt-5">
+                <div class="row g-4 mb-5">
+                    <div class="col-12">
+                        <div
+                            class="p-4 rounded-4"
+                            style="
+                                background: rgba(255, 255, 255, 0.03);
+                                border: 1px solid rgba(255, 255, 255, 0.1);
+                            "
+                        >
+                            <h4 class="text-white fw-bold mb-3 d-flex align-items-center">
+                                <span
+                                    class="bg-primary me-2"
+                                    style="
+                                        width: 4px;
+                                        height: 24px;
+                                        display: inline-block;
+                                        border-radius: 2px;
+                                    "
+                                ></span>
+                                Sistem Informasi Geografis Pendidikan
+                            </h4>
+                            <p class="lh-lg text-white-50 mb-0">
+                                Website ini merupakan platform visualisasi data berbasis spasial
+                                yang menyajikan informasi detail mengenai persebaran sarana
+                                pendidikan di Kabupaten Demak. Dikembangkan untuk membantu
+                                <strong>stakeholder, akademisi, dan masyarakat umum</strong> dalam
+                                memahami dinamika pendidikan melalui data yang interaktif dan mudah
+                                dipahami.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div
+                            class="feature-box p-4 rounded-4 h-100 shadow-sm transition-all"
+                            style="
+                                background: rgba(13, 110, 253, 0.05);
+                                border: 1px solid rgba(13, 110, 253, 0.2);
+                            "
+                        >
+                            <div class="icon-circle bg-primary text-white mb-3 shadow-sm">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h5 class="text-white fw-semibold mb-3">
+                                Peta Interaktif (Choropleth)
+                            </h5>
+                            <p class="small text-white-50 lh-base">
+                                Menampilkan gradasi warna pada setiap kecamatan berdasarkan
+                                kepadatan jumlah sekolah, guru, atau murid. Memberikan gambaran
+                                visual instan tentang wilayah dengan fasilitas pendidikan tertinggi
+                                hingga terendah.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div
+                            class="feature-box p-4 rounded-4 h-100 shadow-sm transition-all"
+                            style="
+                                background: rgba(25, 135, 84, 0.05);
+                                border: 1px solid rgba(25, 135, 84, 0.2);
+                            "
+                        >
+                            <div class="icon-circle bg-success text-white mb-3 shadow-sm">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h5 class="text-white fw-semibold mb-3">Grafik Dinamis</h5>
+                            <p class="small text-white-50 lh-base">
+                                Integrasi grafik batang yang berubah secara real-time berdasarkan
+                                filter jenjang pendidikan (SD/SMP/SMA/SMK). Memudahkan komparasi
+                                data statistik secara akurat dan efisien.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="text-center my-5">
+                    <h2 class="text-white fw-bold mb-2">Informasi Penelitian</h2>
+                    <div
+                        class="mx-auto bg-primary"
+                        style="width: 60px; height: 4px; border-radius: 2px"
+                    ></div>
+                </div>
+
+                <div
+                    class="info-card p-2 shadow-lg"
+                    style="
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 24px;
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                    "
+                >
+                    <ul
+                        class="nav nav-pills nav-fill p-2 gap-2"
+                        id="pills-tab"
+                        role="tablist"
+                        style="background: rgba(0, 0, 0, 0.2); border-radius: 20px"
+                    >
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link active rounded-pill px-4 transition-all"
+                                id="pills-abstrak-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#pills-abstrak"
+                                type="button"
+                                role="tab"
+                            >
+                                <i class="fas fa-file-alt me-2"></i>Abstrak
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link rounded-pill px-4 transition-all"
+                                id="pills-hasil-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#pills-hasil"
+                                type="button"
+                                role="tab"
+                            >
+                                <i class="fas fa-poll me-2"></i>Hasil
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link rounded-pill px-4 transition-all"
+                                id="pills-detail-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#pills-detail"
+                                type="button"
+                                role="tab"
+                            >
+                                <i class="fas fa-microscope me-2"></i>Metodologi
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content p-4" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-abstrak" role="tabpanel">
+                            <div class="d-flex align-items-center mb-3">
+                                <div
+                                    class="vr me-3 bg-primary"
+                                    style="width: 3px; height: 30px; opacity: 1"
+                                ></div>
+                                <h4 class="text-white mb-0">Abstrak Penelitian</h4>
+                            </div>
+                            <p class="lh-lg text-white-50">
+                                Penelitian ini memetakan sebaran data pendidikan di Kabupaten Demak
+                                tahun 2024 menggunakan sistem informasi geografis. Tujuannya adalah
+                                untuk memvisualisasikan data sekolah, guru, dan murid agar
+                                mempermudah analisis pemerataan pendidikan di tiap kecamatan guna
+                                mendukung pengambilan keputusan berbasis data.
+                            </p>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-hasil" role="tabpanel">
+                            <div class="d-flex align-items-center mb-3">
+                                <div
+                                    class="vr me-3 bg-success"
+                                    style="width: 3px; height: 30px; opacity: 1"
+                                ></div>
+                                <h4 class="text-white mb-0">Analisis Wilayah</h4>
+                            </div>
+                            <p class="lh-lg text-white-50">
+                                Berdasarkan data yang terkumpul, terdapat perbedaan signifikan
+                                jumlah fasilitas antara kecamatan perkotaan dan wilayah pesisir.
+                                <strong>Kecamatan Mranggen dan Demak Kota</strong> teridentifikasi
+                                memiliki jumlah satuan pendidikan terbanyak, sementara wilayah
+                                lainnya memerlukan perhatian khusus dalam distribusi tenaga
+                                pendidik.
+                            </p>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-detail" role="tabpanel">
+                            <div class="d-flex align-items-center mb-3">
+                                <div
+                                    class="vr me-3 bg-info"
+                                    style="width: 3px; height: 30px; opacity: 1"
+                                ></div>
+                                <h4 class="text-white mb-0">Instrumen & Data</h4>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div
+                                        class="p-3 rounded-3 border border-secondary border-opacity-25"
+                                        style="background: rgba(255, 255, 255, 0.02)"
+                                    >
+                                        <small class="text-primary d-block mb-1">Sumber Data</small>
+                                        <span class="text-white">BPS Kab. Demak 2024</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div
+                                        class="p-3 rounded-3 border border-secondary border-opacity-25"
+                                        style="background: rgba(255, 255, 255, 0.02)"
+                                    >
+                                        <small class="text-primary d-block mb-1">Software</small>
+                                        <span class="text-white">QGIS</span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div
+                                        class="p-3 rounded-3 border border-secondary border-opacity-25"
+                                        style="background: rgba(255, 255, 255, 0.02)"
+                                    >
+                                        <small class="text-primary d-block mb-1"
+                                            >Sistem Koordinat</small
+                                        >
+                                        <span class="text-white">WGS 84 / EPSG:4326</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center my-5">
+                    <h2 class="text-white fw-bold">Peneliti</h2>
+                    <hr class="border-primary border-3 opacity-75 w-25 mx-auto" />
+                </div> -->
+
+                <!-- <div class="row justify-content-center mt-5">
+                    <div class="col-md-8 col-lg-7">
+                        <div class="executive-card">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-5">
+                                    <div class="image-container">
+                                        <img
+                                            src="image/profile.jpg"
+                                            alt="Peneliti"
+                                            class="img-minimal"
+                                        />
+                                        <div class="edge-fade"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7">
+                                    <div class="ps-5 pe-4">
+                                        <span class="label-thin">Peneliti</span>
+                                        <h2 class="name-clean">Dhani Cahyo K.A.</h2>
+
+                                        <div class="divider-line my-4"></div>
+
+                                        <div class="stats-clean">
+                                            <div class="row g-0 mb-3">
+                                                <div class="col-5">
+                                                    <div class="stat-box">
+                                                        <small>NPM</small>
+                                                        <span>23670151</span>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="col-7 border-start border-secondary border-opacity-25 ps-4"
+                                                >
+                                                    <div class="stat-box">
+                                                        <small>PROGRAM STUDI</small>
+                                                        <span>INFORMATIKA</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="stat-box mt-2 pt-3 border-top border-secondary border-opacity-10"
+                                            >
+                                                <small>INSTITUSI</small>
+                                                <span>UNIVERSITAS PGRI SEMARANG</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="social-minimal mt-5">
+                                            <a
+                                                href="https://www.instagram.com/itsdonn____?igsh=MXJ5eDY0eDBqbnRyaQ=="
+                                                ><i class="fab fa-instagram"></i
+                                            ></a>
+                                            <a href="mailto:dhaniaja431@gmail.com"
+                                                ><i class="fa-solid fa-envelope"></i
+                                            ></a>
+                                            <a href="https://github.com/dhanii1"
+                                                ><i class="fab fa-github"></i
+                                            ></a>
+                                            <a href="https://wa.me/089652389050" target="_blank">
+                                                <i class="fa-brands fa-whatsapp"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </main>
+        </div>
+
+        <footer
+            class="mt-auto py-4"
+            style="background: rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.05)"
+        >
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <p class="mb-0 text-white-50 small">
+                            &copy; 2024 <strong>GIS Pendidikan Demak</strong>. All rights reserved.
+                        </p>
+                        <small class="text-secondary" style="font-size: 0.7rem">
+                            Dibuat untuk keperluan Tugas Akhir / Penelitian Akademik.
+                        </small>
+                    </div>
+
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-links mb-2">
+                            <a
+                                href="index.html"
+                                class="text-white-50 text-decoration-none mx-2 small hover-white"
+                                >Dashboard</a
+                            >
+                            <a
+                                href="informasi.html"
+                                class="text-white-50 text-decoration-none mx-2 small hover-white"
+                                >Informasi</a
+                            >
+                            <a
+                                href="#"
+                                class="text-white-50 text-decoration-none mx-2 small hover-white"
+                                onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+                                >Ke Atas <i class="fas fa-chevron-up ms-1"></i
+                            ></a>
+                        </div>
+                        <div class="text-secondary" style="font-size: 0.75rem">
+                            <i class="fas fa-map-marker-alt me-1 text-primary"></i> Demak, Jawa
+                            Tengah, Indonesia
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- SCRIPT -->
+        <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
