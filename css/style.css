@@ -55,13 +55,13 @@ header {
 }
 
 .logo img {
-    height: 40px;
+    height: 30px;
     width: auto;
 }
 
 .title-subtitle h4 {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.30rem;
     color: var(--gray-50);
 }
 
@@ -466,14 +466,12 @@ body.scrollable-page {
 }
 
 /*# ========== data.html ========== */
-/* 3. Panel Kaca (Glass Panel) */
-/* Digunakan untuk Kartu Statistik dan Kontainer Tabel */
 .glass-panel {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Bayangan lembut */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
@@ -532,13 +530,13 @@ body.scrollable-page {
 }
 
 .glass-panel:hover {
-    border-color: rgba(255, 255, 255, 0.15); /* Efek border terang saat hover */
-    transform: translateY(-2px); /* Efek naik sedikit */
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
 }
 
-/* 4. Tabel Kustom (Dark Table) */
+/* Table */
 .custom-table-container {
-    max-height: 650px; /* Batas tinggi tabel agar bisa discroll */
+    max-height: 650px;
     overflow-y: auto;
     border-radius: 12px;
 }
@@ -549,9 +547,9 @@ body.scrollable-page {
     border-spacing: 0;
 }
 
-/* Header Tabel (Sticky) */
+/* Header Tabel */
 .table-dark-custom th {
-    background-color: #212529; /* Warna solid agar tulisan tidak tembus saat discroll */
+    background-color: #212529;
     position: sticky;
     top: 0;
     z-index: 10;
